@@ -1,0 +1,272 @@
+/* Reset default browser styles */
+body, h1, h2, h3, p, img, a, div {
+    margin: 0;
+    padding: 0;
+    font-family: 'Spotify Circular', Arial, sans-serif;
+}
+
+body {
+    font-family: 'Spotify Circular', Arial, sans-serif;
+    background-color: black;
+    color: white;
+    text-align: center;
+    overflow: auto; /* Allow scrolling */
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Add padding to ensure nothing is cut off */
+}
+
+.home-title {
+    font-size: 5em; /* Increase size by 100% (2x) */
+    margin-top: 40px; /* Adjusted for better spacing */
+}
+
+.vibe {
+    color: #1DB954;
+    font-size: 1em;
+}
+
+.container {
+    margin-top: 10px; /* Reduce spacing between "Vibe Check" and the logo */
+    text-align: center;
+}
+
+.logo {
+    width: 195px; /* Increase size by 30% */
+    height: auto;
+    margin-bottom: 10px; /* Adjusted spacing */
+}
+
+.btn {
+    background-color: #1DB954;
+    color: white;
+    padding: 10px 20px; /* Decrease padding to reduce height */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 28px; /* Keep text size the same */
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px; /* Make the button a pill shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #A9A9A9; /* Neutral color on hover */
+}
+
+.btn-logo {
+    width: 60px; /* Keep the size increased by 2x */
+    height: auto;
+    margin-left: 10px; /* Add spacing between text and logo */
+}
+
+.subtext {
+    margin-top: 40px; /* Add more spacing between button and text below */
+    font-size: 24px;
+}
+
+.info-text {
+    margin-top: 20px; /* Add spacing between the subtext and info text */
+    font-size: 14px;
+    color: grey;
+}
+
+.info-text .highlight {
+    color: #1DB954; /* Spotify green */
+}
+
+.vibe-title {
+    font-size: 2em;
+}
+
+.vibe-text {
+    color: #1DB954;
+    font-size: 3em;
+}
+
+.index-vibe-text {
+    color: #1DB954;
+    font-size: 24px;
+}
+
+.line {
+    width: 80%;
+    border-top: 2px solid white;
+    margin: 20px auto;
+}
+
+.metrics {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 80%;
+    position: relative; /* Add this */
+}
+
+.metric {
+    font-size: 1.2em;
+    flex: 1; /* Allow each metric to take up equal space */
+    padding: 0 20px; /* Add padding for spacing */
+}
+
+.metric img.album-cover {
+    max-width: 100px;
+    margin-top: 10px;
+}
+
+.vertical-line {
+    width: 2px;
+    background-color: white;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.vertical-line:nth-child(2) {
+    left: 33.33%;
+}
+
+.vertical-line:nth-child(4) {
+    left: 66.66%;
+}
+
+.section-title {
+    margin-top: 20px; /* Lessened spacing */
+    font-size: 2em; /* Match the font size of "Your vibe is" */
+}
+
+.plot-container {
+    margin-top: 10px; /* Lessened spacing */
+    width: 80%;
+    text-align: center; /* Center the plots */
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.vibe-investigator {
+    width: 350px; /* Adjust the size as needed */
+    height: auto;
+    margin-top: 20px; /* Add spacing */
+    margin-bottom: 20px; /* Add spacing below the image */
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #1DB954; /* Spotify green */
+    border-radius: 50%;
+    width: 50px; /* Adjust the size */
+    height: 50px; /* Adjust the size */
+    animation: spin 2s linear infinite;
+    margin-top: 20px; /* Add spacing */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Underline and align titles in the same row */
+.metrics h3 {
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+.metrics p {
+    margin-top: 40px; /* Center the top genre text */
+}
+
+.section-title .vibe {
+    color: #1DB954; /* Spotify green */
+}
+
+/* Spacing for loading page */
+.loading-container p {
+    margin-bottom: 20px; /* Add spacing */
+    font-size: 2em; /* Match the size of "Spotify Vibe Checker" */
+}
+
+.home-title .vibe {
+    color: #1DB954; /* Spotify green */
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px; /* Spacing between icon and text */
+}
+
+.tooltip .tooltip-icon {
+    background-color: #D3D3D3; /* Spotify light grey */
+    color: black;
+    border-radius: 50%;
+    padding: 5px;
+    width: 20px; /* Make the circle more uniform */
+    height: 20px; /* Make the circle more uniform */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tooltip:hover .tooltip-icon {
+    background-color: #535353; /* Spotify dark grey */
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the icon */
+    left: 50%;
+    margin-left: -110px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

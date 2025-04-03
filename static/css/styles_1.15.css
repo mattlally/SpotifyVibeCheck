@@ -1,0 +1,640 @@
+/* Reset default browser styles */
+body, h1, h2, h3, p, img, a, div {
+    margin: 0;
+    padding: 0;
+    font-family: 'Spotify Circular', Arial, sans-serif;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+body, html {
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    overflow: auto; /* Allow scrolling */
+}
+
+h1, h3 {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    margin-bottom: 0rem;
+}
+
+.patient-text {
+    font-size: 0.2rem;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.navbar {
+    width: 100%;
+    background-color: #535353;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 0.4rem 0.6rem -0.1rem rgba(0,0,0,0.1), 0 0.2rem 0.4rem -0.1rem rgba(0,0,0,0.06);
+    height: 6rem; /* Ensure enough height for all contents */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+.navbar-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-title .navbar-logo {
+    width: 2.3rem; /* Adjust the size of the logo */
+    height: 2.3rem;
+    margin-left: 1rem; /* Space between text and logo */
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 2rem; /* Adjust the right margin as needed */
+    top: 1rem; /* Adjust top margin to bring it within the navbar */
+}
+
+.profile-container img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-container .user-name {
+    color: white;
+    margin-left: 1rem;
+    font-size: 1em;
+    line-height: 2.5rem; /* Center align the text vertically with the image */
+    cursor: pointer;
+}
+
+.profile-container .arrow {
+    color: white;
+    margin-left: 0.5rem;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    background-color: white;
+    color: black;
+    border-radius: 0.5rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.5);
+    z-index: 1001;
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+.vibe-text {
+    color: {{ vibe_color }};
+}
+
+.section-title .vibe {
+    color: {{ vibe_color }};
+}
+
+.podium {
+    display: flex;
+    justify-content: center; /* Center the podium bars */
+    align-items: flex-end;
+    margin: 2rem 0;
+}
+
+.podium div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 4rem
+    max-width: 8rem; /* Adjust the width for better text visibility */
+    margin: 0 -0.1rem; /* Reduce horizontal space between bars */
+    background-color: #1DB954;
+    color: white;
+    font-weight: bold;
+    border-radius: 0.5rem 0.5rem 0 0;
+    font-size: 0.3em; /* Smaller font size for genre name */
+    position: relative;
+    text-align: center; /* Center align the text */
+    word-wrap: break-word; /* Ensure words break to new lines */
+    padding: 0.5rem; /* Add padding to ensure text is visible */
+    border: 0.1rem solid black; /* Add black outline */
+}
+
+.first {
+    height: 15rem;
+}
+
+.second {
+    height: 12rem;
+}
+
+.third {
+    height: 10rem;
+}
+
+.genre-label {
+    margin-bottom: 0.5rem; /* Space between text and bottom of the bar */
+}
+
+.emoji-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 5em; /* Increase the size of emojis by 5x */
+    animation: rain 2s linear forwards, disappear 2s forwards; /* Remove infinite and ensure it doesn't repeat */
+}
+
+@keyframes rain {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes disappear {
+    0%, 70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.screenshot-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 0.5rem; /* Decrease the size of the button */
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 1.2em; /* Decrease the font size */
+    z-index: 1000;
+}
+
+.vibe-investigator {
+    width: 80%;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 280px;
+}
+
+.home-title {
+    font-size: 10vw; /* Increase font size for mobile */
+    margin-top: 4rem;
+    margin-bottom: 0.5rem; /* Reduce the bottom margin to bring the logo closer */
+}
+
+.vibe {
+    color: #1DB954; /* Spotify green */
+}
+
+.container {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.logo {
+    width: 80%;
+    height: auto;
+    max-width: 280px; /* Set a max width for the logo */
+    margin: 1rem 0; /* Adjust vertical margin */
+}
+
+.btn {
+    background-color: #1DB954;
+    color: white;
+    padding: 0.5rem 0.5rem; /* Reduce padding */
+    text-decoration: none;
+    display: flex; /* Use flexbox for button */
+    align-items: center;
+    justify-content: center;
+    font-size: 4vw; /* Use viewport width units for mobile */
+    max-width: 395px; /* Set a max width for the button */
+    width: 80%; /* Make the button width responsive */
+    border: none;
+    cursor: pointer;
+    border-radius: 2.5rem;
+    transition: background-color 0.3s;
+    margin: 0 auto;
+    margin-top: 2.5rem; /* Center the button */
+}
+
+.btn:hover {
+    background-color: #A9A9A9;
+}
+
+.btn-logo {
+    width: 8vw; /* Use viewport width units for mobile */
+    height: auto;
+    max-width: 30px; /* Set a max width for the button logo */
+    margin-left: 0rem;
+    margin-right:0rem;
+}
+
+.subtext {
+    margin-top: 3rem; /* Match the spacing between VibeCheck text and logo */
+    font-size: 5vw; /* Use viewport width units for mobile */
+}
+
+.index-vibe-text {
+    color: #1DB954;
+    font-size: inherit; /* Make "vibe" the same size as the rest of the text */
+}
+
+.info-text {
+    margin-top: 2rem;
+    font-size: 3vw; /* Use viewport width units for mobile */
+    color: grey;
+}
+
+.info-text .highlight {
+    color: #1DB954;
+}
+
+.vibe-title {
+    font-size: 5vw; /* Use viewport width units */
+}
+
+.vibe-text {
+    color: #1DB954;
+    font-size: 8vw; /* Use viewport width units */
+}
+
+.line {
+    width: 80%;
+    border-top: 0.2rem solid white;
+    margin: 2rem auto;
+}
+
+.line2 {
+    width: 80%;
+    border-top: 0.2rem solid white;
+    margin: 2rem auto;
+}
+
+.metric {
+    font-size: 4vw; /* Use viewport width units */
+    flex: 1;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.metric img.album-cover {
+    max-width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.vertical-line {
+    display: none; /* Hide vertical lines on smaller screens */
+}
+
+.section-title {
+    margin-top: 2rem;
+    font-size: 5vw; /* Use viewport width units */
+}
+
+.loader {
+    border: 0.8rem solid #f3f3f3;
+    border-top: 0.8rem solid #1DB954;
+    border-radius: 50%;
+    width: 10vw; /* Use viewport width units */
+    height: 10vw; /* Use viewport width units */
+    animation: spin 2s linear infinite;
+    margin-top: 2rem;
+    max-width: 80px; /* Ensure it doesn't get bigger than 80px */
+    max-height: 80px; /* Ensure it doesn't get bigger than 80px */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Underline and align titles in the same row */
+.metrics h3 {
+    text-decoration: underline;
+    margin-bottom: 0rem;
+}
+
+.metrics p {
+    margin-top: 1rem; /* Center the top genre text */
+}
+
+.section-title .vibe {
+    color: #1DB954;
+}
+
+/* Spacing for loading page */
+.loading-container p {
+    margin-bottom: 2rem;
+    max-size: 4vw;
+    font-size: 5vw; /* Match the size of "Spotify Vibe Checker" */
+}
+
+.home-title .vibe {
+    color: #1DB954;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the title */
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.tooltip .tooltip-icon {
+    background-color: #D3D3D3;
+    color: black;
+    border-radius: 50%;
+    padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tooltip:hover .tooltip-icon {
+    background-color: #535353;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 22rem;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -11rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -0.5rem;
+    border-width: 0.5rem;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.plot-container {
+    width: 100%;
+    max-width: 1000px;
+    min-width: 300px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 767px) {
+
+    .navbar-logo {
+        margin-left: 0; /* Remove margin on smaller screens */
+        width: 2.3rem; /* Match the size of the profile picture */
+        height: 2.3rem; /* Match the size of the profile picture */
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Adjust top margin to bring it within the navbar */
+    }
+
+    .screenshot-button {
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+
+    .profile-container .user-name {
+        display: none; /* Hide the user's name */
+    }
+
+    .profile-container {
+        right: 1rem; /* Adjust position for smaller screens */
+    }
+
+    .navbar {
+        height: auto; /* Adjust height for smaller screens */
+        padding: 2rem 2rem; /* Increase the padding to double the height */
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Center contents vertically */
+    }
+
+    .metrics {
+        display: flex;
+        flex-direction: column; /* Stack metrics vertically */
+        align-items: center; /* Center align metrics */
+        width: 100%; /* Ensure metrics take full width */
+    }
+
+    .horizontal-line {
+        display: block; /* Show horizontal lines on small screens */
+        width: 80%;
+        border-top: 0.2rem solid white;
+        margin: 1rem 0;
+    }
+
+    .genre-label {
+        margin-bottom: 0.5rem; /* Space between text and bottom of the bar */
+        font-size: 0.8rem;
+    }
+
+    .podium div {
+        width: 6rem; /* Adjust the width for better text visibility */
+    }
+
+    .tooltip .tooltip-icon {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+
+    .plot-container {
+        width: 100%;
+        max-width: 380x;
+        min-width: 380px;
+        height: auto;
+        margin: 0 0;
+    }
+
+    .line2 {
+        width: 80%;
+        border-top: 0.2rem solid white;
+        margin: 0rem auto;
+    }
+
+}
+
+/* Media queries for larger screens */
+@media (min-width: 768px) {
+    .home-title {
+        font-size: 4vw; /* Adjust font size for larger screens */
+        margin-bottom: 0.5rem; /* Reduce the bottom margin for larger screens */
+    }
+
+    .logo {
+        margin: 0.5rem 0; /* Adjust vertical margin for larger screens */
+        max-width: 200px; /* Set a smaller max width for the logo */
+    }
+
+    .navbar-logo {
+        margin-left: 0rem; /* Add margin between "VibeCheck" and logo */
+        width: 2.3rem;
+        height: 2.3rem;
+        display: flex;
+        align-items: center;
+        position: absolute;
+    }
+
+    .screenshot-button {
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+
+    .navbar {
+        height: auto; /* Adjust height for smaller screens */
+        padding: 2rem 2rem; /* Increase the padding to double the height */
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Center contents vertically */
+    }
+
+    .btn {
+        font-size: 1rem; /* Adjust font size for larger screens */
+        padding: 0.5rem 1rem; /* Reduce padding for larger screens */
+        max-width: 200px; /* Set a max width for the button */
+        width: auto; /* Allow the button to grow proportionally */
+    }
+
+    .btn-logo {
+        width: 1.5rem; /* Adjust logo size for larger screens */
+        max-width: 30px; /* Set a max width for the button logo */
+    }
+
+    .subtext {
+        font-size: 1.5rem; /* Match the size of the text on the button */
+        margin-top: 2rem; /* Increase the top margin to match the spacing between VibeCheck text and logo */
+    }
+
+    .index-vibe-text {
+        font-size: inherit; /* Make "vibe" the same size as the rest of the text */
+    }
+
+    .info-text {
+        font-size: 1rem; /* Make the text 20% smaller than the button text */
+    }
+
+    .metrics {
+        display: flex;
+        flex-direction: row; /* Display metrics horizontally */
+        justify-content: space-around; /* Space metrics evenly */
+        width: 100%; /* Ensure metrics take full width */
+    }
+
+    .vertical-line {
+        display: block; /* Show vertical lines on larger screens */
+        height: 100%;
+        border-left: 0.2rem solid white;
+        margin: 0 1rem;
+    }
+
+    .metric {
+        flex: 1; /* Ensure metrics take equal space */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .metrics h3 {
+        text-decoration: underline;
+        margin-bottom: 0rem;
+        font-size: 2rem;
+    }
+
+    .metrics p {
+        margin-top: 1rem; /* Center the top genre text */
+        font-size: 1rem;
+    }
+
+    .metric img.album-cover {
+        max-size: 2vw;
+        margin-bottom: 1rem;
+        max-width: 220px;
+    }
+
+    .podium {
+        min-width: 15%
+        max-width: 30%;
+    }
+}

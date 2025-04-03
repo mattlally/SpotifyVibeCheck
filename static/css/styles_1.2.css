@@ -1,0 +1,318 @@
+/* Reset default browser styles */
+body, h1, h2, h3, p, img, a, div {
+    margin: 0;
+    padding: 0;
+    font-family: 'Spotify Circular', Arial, sans-serif;
+}
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    overflow: auto; /* Allow scrolling */
+}
+
+h1, h2, h3 {
+    margin-bottom: 2rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.home-title {
+    font-size: 10vw; /* Increase font size for mobile */
+    margin-top: 4rem;
+    margin-bottom: 0.5rem; /* Reduce the bottom margin to bring the logo closer */
+}
+
+.vibe {
+    color: #1DB954; /* Spotify green */
+}
+
+.container {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.logo {
+    width: 80%;
+    height: auto;
+    max-width: 280px; /* Set a max width for the logo */
+    margin: 1rem 0; /* Adjust vertical margin */
+}
+
+.btn {
+    background-color: #1DB954;
+    color: white;
+    padding: 0.5rem 1rem; /* Reduce padding */
+    text-decoration: none;
+    display: flex; /* Use flexbox for button */
+    align-items: center;
+    justify-content: center;
+    font-size: 5vw; /* Use viewport width units for mobile */
+    max-width: 395px; /* Set a max width for the button */
+    width: 80%; /* Make the button width responsive */
+    border: none;
+    cursor: pointer;
+    border-radius: 2.5rem;
+    transition: background-color 0.3s;
+    margin: 0 auto;
+    margin-top: 2.5rem; /* Center the button */
+}
+
+.btn:hover {
+    background-color: #A9A9A9;
+}
+
+.btn-logo {
+    width: 8vw; /* Use viewport width units for mobile */
+    height: auto;
+    max-width: 30px; /* Set a max width for the button logo */
+    margin-left: 0.5rem;
+}
+
+.subtext {
+    margin-top: 3rem; /* Match the spacing between VibeCheck text and logo */
+    font-size: 5vw; /* Use viewport width units for mobile */
+}
+
+.index-vibe-text {
+    color: #1DB954;
+    font-size: inherit; /* Make "vibe" the same size as the rest of the text */
+}
+
+.info-text {
+    margin-top: 2rem;
+    font-size: 3vw; /* Use viewport width units for mobile */
+    color: grey;
+}
+
+.info-text .highlight {
+    color: #1DB954;
+}
+
+.vibe-title {
+    font-size: 5vw; /* Use viewport width units */
+}
+
+.vibe-text {
+    color: #1DB954;
+    font-size: 8vw; /* Use viewport width units */
+}
+
+.line {
+    width: 80%;
+    border-top: 0.2rem solid white;
+    margin: 2rem auto;
+}
+
+.metrics {
+    display: flex;
+    flex-direction: column; /* Change to column for smaller screens */
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.metric {
+    font-size: 4vw; /* Use viewport width units */
+    flex: 1;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.metric img.album-cover {
+    max-width: 80%;
+    margin-top: 1rem;
+}
+
+.vertical-line {
+    display: none; /* Hide vertical lines on smaller screens */
+}
+
+.section-title {
+    margin-top: 2rem;
+    font-size: 5vw; /* Use viewport width units */
+}
+
+.plot-container {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.vibe-investigator {
+    width: 80%;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 280px;
+}
+
+.loader {
+    border: 0.8rem solid #f3f3f3;
+    border-top: 0.8rem solid #1DB954;
+    border-radius: 50%;
+    width: 10vw; /* Use viewport width units */
+    height: 10vw; /* Use viewport width units */
+    animation: spin 2s linear infinite;
+    margin-top: 2rem;
+    max-width: 80px; /* Ensure it doesn't get bigger than 80px */
+    max-height: 80px; /* Ensure it doesn't get bigger than 80px */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Underline and align titles in the same row */
+.metrics h3 {
+    text-decoration: underline;
+    margin-bottom: 1rem;
+}
+
+.metrics p {
+    margin-top: 4rem; /* Center the top genre text */
+}
+
+.section-title .vibe {
+    color: #1DB954;
+}
+
+/* Spacing for loading page */
+.loading-container p {
+    margin-bottom: 2rem;
+    max-size: 4vw;
+    font-size: 5vw; /* Match the size of "Spotify Vibe Checker" */
+}
+
+.home-title .vibe {
+    color: #1DB954;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the title */
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.tooltip .tooltip-icon {
+    background-color: #D3D3D3;
+    color: black;
+    border-radius: 50%;
+    padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tooltip:hover .tooltip-icon {
+    background-color: #535353;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 22rem;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -11rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -0.5rem;
+    border-width: 0.5rem;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 768px) {
+    .home-title {
+        font-size: 4vw; /* Adjust font size for larger screens */
+        margin-bottom: 0.5rem; /* Reduce the bottom margin for larger screens */
+    }
+
+    .logo {
+        margin: 0.5rem 0; /* Adjust vertical margin for larger screens */
+        max-width: 200px; /* Set a smaller max width for the logo */
+    }
+
+    .btn {
+        font-size: 1.5rem; /* Adjust font size for larger screens */
+        padding: 0.5rem 1rem; /* Reduce padding for larger screens */
+        max-width: 300px; /* Set a max width for the button */
+        width: auto; /* Allow the button to grow proportionally */
+    }
+
+    .btn-logo {
+        width: 1.5rem; /* Adjust logo size for larger screens */
+        max-width: 30px; /* Set a max width for the button logo */
+    }
+
+    .subtext {
+        font-size: 1.5rem; /* Match the size of the text on the button */
+        margin-top: 2rem; /* Increase the top margin to match the spacing between VibeCheck text and logo */
+    }
+
+    .index-vibe-text {
+        font-size: inherit; /* Make "vibe" the same size as the rest of the text */
+    }
+
+    .info-text {
+        font-size: 1.2rem; /* Make the text 20% smaller than the button text */
+    }
+
+    .metrics {
+        flex-direction: row; /* Change to row for larger screens */
+    }
+
+    .vertical-line {
+        display: block; /* Show vertical lines on larger screens */
+    }
+
+    .loading-container p {
+        font-size: 4vw; /* Ensure it doesn't get bigger than the "VibeCheck" text */
+    }
+
+    .loader {
+        width: 50px; /* Ensure it doesn't get bigger than 80px */
+        height: 50px; /* Ensure it doesn't get bigger than 80px */
+    }
+
+}

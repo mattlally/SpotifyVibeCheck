@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recently Played Tracks</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const emojiContainer = document.createElement('div');
+            emojiContainer.className = 'emoji-container';
+            document.body.appendChild(emojiContainer);
+
+            const userVibe = "{{ user_vibe }}";
+            let emoji;
+            switch (userVibe) {
+                case "euphoric":
+                    emoji = "😄";
+                    break;
+                case "fiery":
+                    emoji = "🔥";
+                    break;
+                case "melancholic":
+                    emoji = "😢";
+                    break;
+                case "chill":
+                    emoji = "🥶";
+                    break;
+                default:
+                    emoji = "🎵";
+            }
+
+            for (let i = 0; i < 3000; i++) {  // Triple the number of emojis
+                const emojiElement = document.createElement('div');
+                emojiElement.className = 'emoji';
+                emojiElement.innerText = emoji;
+                emojiElement.style.left = `${Math.random() * 100}%`;
+                emojiElement.style.top = `${Math.random() * -100}vh`; // Ensure emojis start at different vertical positions
+                emojiElement.style.animationDelay = `${Math.random() * 0.5}s`; // Short delay to ensure all emojis start moving
+                emojiContainer.appendChild(emojiElement);
+            }
+
+            setTimeout(() => {
+                emojiContainer.remove();
+            }, 2000); // Shortened the duration to 2 seconds
+
+            // Profile dropdown logic
+            const profileContainer = document.querySelector('.profile-container');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            profileContainer.addEventListener('click', () => {
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!profileContainer.contains(event.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+
+            function captureAndCopy() {
+                const content = document.querySelector('.content');
+
+                const waitForImagesToLoad = () => {
+                    const images = content.querySelectorAll('img');
+                    const promises = [];
+
+                    images.forEach((img) => {
+                        if (!img.complete) {
+                            promises.push(new Promise((resolve) => {
+                                img.onload = img.onerror = resolve;
+                            }));
+                        }
+                    });
+
+                    return Promise.all(promises);
+                };
+
+                waitForImagesToLoad().then(() => {
+                    html2canvas(content, {
+                        backgroundColor: "#000",
+                        useCORS: true,
+                        logging: true
+                    }).then(canvas => {
+                        canvas.toBlob(blob => {
+                            const item = new ClipboardItem({ "image/png": blob });
+                            navigator.clipboard.write([item]);
+                            alert("Screenshot copied to clipboard!");
+                        });
+                    });
+                });
+            }
+
+            document.querySelector('.screenshot-button').addEventListener('click', captureAndCopy);
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <button class="screenshot-button" onclick="captureAndCopy()">📸</button>
+        <div class="navbar-title-container">
+            <div class="navbar-title">
+            </div>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="navbar-logo">
+        </div>
+        <div class="profile-container">
+            <img src="{{ user_image }}" alt="User Image">
+            <span class="user-name">{{ user_name }}</span>
+            <span class="arrow">▼</span>
+            <div class="dropdown-menu">
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h2 class="vibe-title">Your vibe is: <span class="vibe-text" style="color: {{ vibe_color }}">{{ user_vibe }} {{ user_vibe_emoji }}</span></h2>
+        <hr class="line2">
+        <div class="title-container">
+            <div class="tooltip">
+                <span class="tooltip-icon">?</span>
+                <span class="tooltiptext">We took your 50 most recently listened to songs and plotted them below. The larger the dot, the more listens. The quadrant with the most listens is highlighted and determines your vibe! You can tap/hover over a dot to see the details of that song.</span>
+            </div>
+            <h2 class="section-title">How we determined your <span style="color: {{ vibe_color }}">vibe</span></h2>
+        </div>
+        <div class="plot-container">
+            {{ scatter_plot_data_valence_energy|safe }}
+        </div>
+        <hr class="line">
+        <div class="metrics">
+            <div class="metric">
+                <h3>Top Song</h3>
+                <p>{{ top_song }}</p>
+                <img src="{{ top_album_cover }}" alt="Album Cover" class="album-cover">
+            </div>
+            <div class="vertical-line"></div>
+            <div class="metric">
+                <h3>Top Artist</h3>
+                <p>{{ top_artist }}</p>
+                <img src="{{ top_artist_image }}" alt="Artist Image" class="album-cover">
+            </div>
+            <div class="vertical-line"></div>
+            <div class="metric">
+                <h3>Top Genres</h3>
+                <div class="podium">
+                    <div class="second">
+                        <span class="genre-label">#2</span>
+                        <span class="genre-label">{{ top_genres[1].replace(' ', '<br>')|safe }}</span>
+                    </div>
+                    <div class="first">
+                        <span class="genre-label">#1 🏆</span>
+                        <span class="genre-label">{{ top_genres[0].replace(' ', '<br>')|safe }}</span>
+                    </div>
+                    <div class="third">
+                        <span class="genre-label">#3</span>
+                        <span class="genre-label">{{ top_genres[2].replace(' ', '<br>')|safe }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
